@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block nav %}
+    <li><a href="{% url 'quotes:list' sort='latest' %}">{% trans 'Latest' %}</a></li>
+    <li><a href="{% url 'quotes:list' sort='highest' %}">{% trans 'Top' %}</a></li>
+    <li><a href="#">{% trans 'Search' %}</a></li>
+    <li><a href="{% url 'quotes:list' sort='random' %}">{% trans 'Random' %}</a></li>
+    <li><a href="{% url 'quotes:add' %}">{% trans 'Add' %}</a></li>
+{% endblock %}

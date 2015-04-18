@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>dQDB</title>
+  </head>
+  <body>
+    <header>
+      <a href="{% url 'quotes:home' %}"><h1>dQDB</h1></a>
+    </header>
+
+    <nav>
+      <ul>{% block nav %}{% endblock %}</ul>
+    </nav>
+
+    <main>
+      {% block main %}{% endblock %}
+    </main>
+  </body>
+</html>

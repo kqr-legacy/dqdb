@@ -1,0 +1,15 @@
+{% load i18n %}
+
+<article>
+  <header>
+    <time datetime="{{ quote.timestamp|date:'c' }}">{{ quote.timestamp|date:'j F Y H:i' }}</time>
+    &mdash;
+    <span class="score">{% trans 'Score' %}: {{ quote.score }}</span>
+    &mdash;
+    <a href="#">Permalink</a>
+  </header>
+
+  <pre>{{ quote.text }}</pre>
+
+  <footer>{% trans 'Submitted by' %} {{ quote.submitter.username }}</footer>
+</article>

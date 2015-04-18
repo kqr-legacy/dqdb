@@ -1,0 +1,23 @@
+{% extends 'quotes/base.html' %}
+{% load i18n %}
+
+{% block main %}
+  <ol>
+    {% for quote in quotes %}
+      <li>{% include 'quotes/quote.html' %}</li>
+    {% endfor %}
+  </ol>
+
+  {% if quotes.has_previous or quotes.has_next %}
+    {% if quotes.has_previous %}
+      <a href="{% url 'quotes:list' sort=sort page=quotes.previous_page_number %}">«</a>
+    {% endif %}
+
+    {% trans 'Page' %} {{ quotes.number }}
+    {% trans 'of' %} {{ quotes.paginator.num_pages }}
+
+    {% if quotes.has_next %}
+      <a href="{% url 'quotes:list' sort=sort page=quotes.next_page_number %}">»</a>
+    {% endif %}
+  {% endif %}
+{% endblock %}

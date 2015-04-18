@@ -1,0 +1,10 @@
+{% extends 'quotes/base.html' %}
+
+{% block main %}
+<form action="{% url 'quotes:add' %}" method="post">
+  {% csrf_token %}
+  {{ form }}
+  <input type="submit" value="Submit" />
+</form>
+{% endblock %}
+
