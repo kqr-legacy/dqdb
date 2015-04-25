@@ -10,11 +10,7 @@ def download_quotes(url):
             if not line:
                 continue
             elif line == '~':
-                yield Quote(
-                    timestamp=quote['timestamp'],
-                    text='\n'.join(quote['text']),
-                    legacy_hash=quote['legacy_hash'],
-                )
+                yield quote
                 quote = {}
             elif 'timestamp' not in quote:
                 quote['timestamp'] = datetime.fromtimestamp(int(line))
@@ -27,8 +23,13 @@ def download_quotes(url):
 
 
 def save_quotes(quotes, user):
+    quotes = list(quotes)
+
     for quote in quotes:
-        quote.submitter = user
-        quote.save()
+        Quote(text='\n'.join(quote['text']), legacy_hash=quote['legacy_hash'], submitter=user).save()
+        q = Quote.objects.get(legacy_hash=quote['legacy_hash'])
+        q.timestamp = quote['timestamp']
+        q.save()
+
 
 
