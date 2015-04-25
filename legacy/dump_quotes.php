@@ -10,7 +10,10 @@ $result = mysql_query($query);
 while ($row = mysql_fetch_array($result)) {
         $pubdate = $row['pubdate'];
         $hash = $row['hash'];
-        $quote = str_replace("\r", '', str_replace('\r\n', "\n", $row['quote']));
+        $quote = str_replace('\r\n', "\n", $row['quote']);
+	$quote = str_replace("\r", '', $quote);
+	$quote = str_replace("\\'", "'", $quote);
+	$quote = str_replace('\\"', '"', $quote);
         echo("$pubdate\n$hash\n$quote\n");
         echo("~\n");
 }
