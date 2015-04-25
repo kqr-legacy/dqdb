@@ -1,10 +1,37 @@
 {% extends 'base.html' %}
-{% load i18n %}
+{% load i18n staticfiles quotes_tags %}
+
+{% block extrahead %}
+  {{ block.super }}
+  <script src="{% static 'quotes/js/jquery-2.1.3.min.js' %}"></script>
+  <script src="{% static 'quotes/js/voting.js' %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'quotes/css/quotes.css' %}" />
+{% endblock %}
 
 {% block nav %}
-    <li><a href="{% url 'quotes:list' sort='latest' %}">{% trans 'Latest' %}</a></li>
-    <li><a href="{% url 'quotes:list' sort='highest' %}">{% trans 'Top' %}</a></li>
-    <li><a href="#">{% trans 'Search' %}</a></li>
-    <li><a href="{% url 'quotes:list' sort='random' %}">{% trans 'Random' %}</a></li>
-    <li><a href="{% url 'quotes:add' %}">{% trans 'Add' %}</a></li>
+  <li class="{% active 'quotes:list' sort='latest' %}">
+    <a href="{% url 'quotes:list' sort='latest' %}">
+      {% trans 'Latest' %}
+    </a>
+  </li>
+  <li class="{% active 'quotes:list' sort='highest' %}">
+    <a href="{% url 'quotes:list' sort='highest' %}">
+      {% trans 'Top' %}
+    </a>
+  </li>
+  <li class="{% active 'quotes:search' %}">
+    <a href="{% url 'quotes:search' %}">
+      {% trans 'Search' %}
+    </a>
+  </li>
+  <li class="{% active 'quotes:list' sort='random' %}">
+    <a href="{% url 'quotes:list' sort='random' %}">
+      {% trans 'Random' %}
+    </a>
+  </li>
+  <li class="{% active 'quotes:add' %}">
+    <a href="{% url 'quotes:add' %}">
+      {% trans 'Add' %}
+    </a>
+  </li>
 {% endblock %}

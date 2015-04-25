@@ -1,12 +1,29 @@
-{% load i18n %}
+{% load i18n quotes_tags %}
 
-<article>
+<article id="quote-{{ quote.id }}">
   <header>
-    <time datetime="{{ quote.timestamp|date:'c' }}">{{ quote.timestamp|date:'j F Y H:i' }}</time>
-    &mdash;
-    <span class="score">{% trans 'Score' %}: {{ quote.score }}</span>
-    &mdash;
-    <a href="#">Permalink</a>
+    <div class="row">
+      <div class="col-sm-4 left">
+        <time datetime="{{ quote.timestamp|date:'c' }}">{{ quote.timestamp|date:'j F Y H:i' }}</time>
+      </div>
+
+      <div class="col-sm-4 center">
+        {% spaceless %}
+        {% set_vote_class quote %}
+        <a data-action="vote" class="{{ quote.vote_class }}">
+          <i class="fa fa-angle-double-up"></i>
+        </a>
+        {% endspaceless %}
+        <span class="score">
+          {% trans 'Score' %}:
+          <span class="number">{{ quote.score }}</span>
+        </span>
+      </div>
+
+      <div class="col-sm-4 right">
+        <a href="{% url 'quotes:single' quote.id %}">Permalink</a>
+      </div>
+    </div>
   </header>
 
   <pre>{{ quote.text }}</pre>

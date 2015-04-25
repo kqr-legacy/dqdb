@@ -2,22 +2,34 @@
 {% load i18n %}
 
 {% block main %}
-  <ol>
-    {% for quote in quotes %}
-      <li>{% include 'quotes/quote.html' %}</li>
-    {% endfor %}
-  </ol>
+  <div class="row">
+    <div class="col-sm-12">
+      {% for quote in quotes %}
+        {% include 'quotes/quote.html' %}
+      {% endfor %}
+    </div>
+  </div>
 
   {% if quotes.has_previous or quotes.has_next %}
-    {% if quotes.has_previous %}
-      <a href="{% url 'quotes:list' sort=sort page=quotes.previous_page_number %}">«</a>
-    {% endif %}
-
-    {% trans 'Page' %} {{ quotes.number }}
-    {% trans 'of' %} {{ quotes.paginator.num_pages }}
-
-    {% if quotes.has_next %}
-      <a href="{% url 'quotes:list' sort=sort page=quotes.next_page_number %}">»</a>
-    {% endif %}
+    <div class="row quote-pagination">
+      <div class="col-sm-1 col-sm-offset-4 right">
+        {% if quotes.has_previous %}
+          <a href="{% url 'quotes:list' sort=sort page=quotes.previous_page_number %}">
+            <i class="fa fa-chevron-circle-left"></i>
+          </a>
+        {% endif %}
+      </div>
+      <div class="col-sm-2 center">
+        {% trans 'Page' %} {{ quotes.number }}
+        {% trans 'of' %} {{ quotes.paginator.num_pages }}
+      </div>
+      <div class="col-sm-1 left">
+        {% if quotes.has_next %}
+          <a href="{% url 'quotes:list' sort=sort page=quotes.next_page_number %}">
+            <i class="fa fa-chevron-circle-right"></i>
+          </a>
+        {% endif %}
+      </div>
+    </div>
   {% endif %}
 {% endblock %}

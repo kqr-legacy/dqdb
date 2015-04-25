@@ -1,0 +1,10 @@
+{% extends 'quotes/base.html' %}
+{% load i18n %}
+
+{% block main %}
+<form action="{% url 'quotes:search' %}" method="get">
+  {% trans 'Search for' %}: <input type="text" name="q" />
+  <input type="submit" value="{% trans 'Search!' %}" />
+</form>
+{% endblock %}
+

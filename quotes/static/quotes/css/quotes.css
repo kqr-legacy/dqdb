@@ -1,0 +1,64 @@
+
+a:hover {
+  cursor: pointer;
+}
+a.disabled {
+  color: #aaa;
+  text-decoration: none;
+}
+a.disabled:hover {
+  cursor: initial;
+}
+
+article {
+  margin-top: 40px;
+}
+
+article header {
+  background-color: #ddd;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 1px;
+}
+
+.left, .center, .right {
+  text-align: center;
+}
+@media(min-width: 768px) {
+  .left {
+    text-align: left;
+  }
+  .right {
+    text-align: right;
+  }
+}
+
+article pre {
+  margin-bottom: 0;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+article footer {
+  color: #ccc;
+  text-align: right;
+}
+
+.quote-pagination {
+  margin-top: 30px;
+}
+
+.quote-pagination i {
+  font-size: 200%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+@media(min-width: 768px) {
+  .quote-pagination i {
+    font-size: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
