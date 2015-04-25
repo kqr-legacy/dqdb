@@ -1,8 +1,7 @@
 TODO
 ====
 
-* Set up production
-* Migration of old quotes in production
+* Automatically make links out of URLs
 * Styling of forms
 * i18n?
 
