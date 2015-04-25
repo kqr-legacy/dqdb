@@ -21,10 +21,10 @@ PROJECT_ROOT = os.path.join(BASE_DIR, 'dqdb')
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '37-oern@wz@xe==n^up%+l9pr7!ijm1u*1y$dt1st4^)haut3m'
+SECRET_KEY = os.environ.get('DQDB_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DQDB_DEBUG', False)
 
 ALLOWED_HOSTS = []
 
