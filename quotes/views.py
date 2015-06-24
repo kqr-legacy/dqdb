@@ -50,7 +50,7 @@ def search(request, terms=None):
     if terms:
         return quote_list(
             request, sort='latest',
-            quote_query=Quote.objects.filter(text__contains=terms)
+            quote_query=Quote.objects.filter(text__icontains=terms)
         )
 
     return render(request, 'quotes/search.html')
